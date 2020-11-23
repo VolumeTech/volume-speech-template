@@ -204,6 +204,7 @@ jobs:
         run: |
           speech test create -n test_from_${{ env.UNDERSCORE_EVENT_NAME }}_${{ env.EVENT_ID }} -a ${{ env.AUDIO_TRANS_TEST_ID }} -m ${{ env.MODEL_ID }} -lm ${{ env.MODEL_ID }} --wait > ${{ env.TEST_BUILD_FOLDER_PATH }}/test-output.txt
           test_id=$(cat ${{ env.TEST_BUILD_FOLDER_PATH }}/test-output.txt | sed -n '3p')
+          echo test_id
           if ! [[ ${test_id//-/} =~ ^[[:xdigit:]]{32}$ ]]
           then
             echo "::error ::Failed to test the Custom Speech model. Possibly re-run all jobs."
