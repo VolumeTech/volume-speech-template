@@ -169,11 +169,11 @@ jobs:
           if [[ ${custom_speech_model_id//-/} =~ ^[[:xdigit:]]{32}$ ]]
           then
             echo IF THIS IS NOT A BASELINE TEST, TEST THE BENCHMARK CUSTOM SPEECH MODEL WITH GUID: $custom_speech_model_id
-            echo "::MODEL_ID=$(echo $custom_speech_model_id)" >> $GITHUB_ENV
+            echo "MODEL_ID=$(echo $custom_speech_model_id)" >> $GITHUB_ENV
           else
             echo NO EXISTING CUSTOM SPEECH MODELS. TEST THE LATEST BASELINE MODEL.
-            echo "::INITIAL_MODEL_EXISTS=false" >> $GITHUB_ENV
-            echo "::IS_BASELINE_TEST=true" >> $GITHUB_ENV
+            echo "INITIAL_MODEL_EXISTS=false" >> $GITHUB_ENV
+            echo "IS_BASELINE_TEST=true" >> $GITHUB_ENV
           fi
 
       # If a benchmark model does not exist, or if a user pushed a tag beginning
